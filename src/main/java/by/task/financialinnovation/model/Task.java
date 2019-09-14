@@ -1,13 +1,19 @@
 package by.task.financialinnovation.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "tasks")
 public class Task extends AbstractBaseEntity {
+
+    @Column(name = "name",nullable = false)
     private String name;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "person_id", nullable = false)
     private Person person;
+
+    @Column(name = "state",nullable = false)
     private boolean state;
 
     public Task() {

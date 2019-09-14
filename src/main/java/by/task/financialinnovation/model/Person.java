@@ -1,7 +1,6 @@
 package by.task.financialinnovation.model;
 
 import by.task.financialinnovation.View;
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.hibernate.validator.constraints.SafeHtml;
 import javax.persistence.*;
 import javax.validation.constraints.Email;
@@ -17,9 +16,9 @@ import javax.validation.constraints.Size;
 @Table(name = "persons", uniqueConstraints = {@UniqueConstraint(columnNames = "email", name = "persons_unique_email_idx")})
 public class Person extends AbstractBaseEntity{
 
-    public static final String DELETE = "User.delete";
-    public static final String BY_EMAIL = "User.getByEmail";
-    public static final String ALL_SORTED = "User.getAllSorted";
+    public static final String DELETE = "Person.delete";
+    public static final String BY_EMAIL = "Person.getByEmail";
+    public static final String ALL_SORTED = "Person.getAllSorted";
 
     @Column(name = "firstName", nullable = false)
     @NotBlank
@@ -49,7 +48,6 @@ public class Person extends AbstractBaseEntity{
     @Column(name = "password", nullable = false)
     @NotBlank
     @Size(min = 5, max = 100)
-    @JsonProperty(access = JsonProperty.Access.WRITE_ONLY)
     private String password;
 
     public Person() {

@@ -1,13 +1,19 @@
 package by.task.financialinnovation.model;
 
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 
 @Entity
 @Table(name = "log_of_task")
 public class LogOfTask extends AbstractBaseEntity {
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "task_id", nullable = false)
     private Task task;
+
+    @Column(name = "spent_of_time",nullable = false)
     private Long spentOfTime;
+
+    @Column(name = "comment",nullable = false)
     private String comment;
 
     public LogOfTask() {
