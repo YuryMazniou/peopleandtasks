@@ -19,9 +19,8 @@ public class LogOfTask extends AbstractBaseEntity {
     public LogOfTask() {
     }
 
-    public LogOfTask(Integer id, Task task, Long spentOfTime, String comment) {
+    public LogOfTask(Integer id, Long spentOfTime, String comment) {
         super(id);
-        this.task = task;
         this.spentOfTime = spentOfTime;
         this.comment = comment;
     }

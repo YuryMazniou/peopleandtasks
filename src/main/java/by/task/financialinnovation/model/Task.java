@@ -19,10 +19,9 @@ public class Task extends AbstractBaseEntity {
     public Task() {
     }
 
-    public Task(Integer id, String name, Person person, boolean state) {
+    public Task(Integer id, String name, boolean state) {
         super(id);
         this.name = name;
-        this.person = person;
         this.state = state;
     }
 
