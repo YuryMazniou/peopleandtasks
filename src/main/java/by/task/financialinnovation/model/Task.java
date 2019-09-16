@@ -1,19 +1,33 @@
 package by.task.financialinnovation.model;
 
-import javax.persistence.*;
+import by.task.financialinnovation.View;
+import org.hibernate.validator.constraints.SafeHtml;
 
+import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.NotNull;
+
+@NamedQueries({
+        @NamedQuery(name = Task.ALL_SORTED, query = "SELECT t FROM Task t WHERE t.person.id=:person_id ORDER BY t.name"),
+})
 @Entity
 @Table(name = "tasks")
 public class Task extends AbstractBaseEntity {
+    public static final String ALL_SORTED = "Task.getAll";
 
     @Column(name = "name",nullable = false)
+    @NotBlank
+    @SafeHtml(groups = {View.Web.class})
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "person_id", nullable = false)
+    @NotNull(groups = View.Persist.class)
     private Person person;
 
     @Column(name = "state",nullable = false)
+    @NotNull
+    @SafeHtml(groups = {View.Web.class})
     private boolean state;
 
     public Task() {

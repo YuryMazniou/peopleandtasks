@@ -17,6 +17,8 @@ public class JpaLogOfTaskRepository implements LogOfTaskRepository {
 
     @Override
     public List<LogOfTask> getAll(int task_id) {
-        return null;
+        return em.createNamedQuery(LogOfTask.ALL_SORTED, LogOfTask.class)
+                .setParameter("task_id", task_id)
+                .getResultList();
     }
 }
