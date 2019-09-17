@@ -6,6 +6,7 @@ import org.hibernate.validator.constraints.SafeHtml;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Size;
 
 @NamedQueries({
         @NamedQuery(name = Task.ALL_SORTED, query = "SELECT t FROM Task t WHERE t.person.id=:person_id ORDER BY t.name"),
@@ -18,6 +19,7 @@ public class Task extends AbstractBaseEntity {
     @Column(name = "name",nullable = false)
     @NotBlank
     @SafeHtml(groups = {View.Web.class})
+    @Size(min = 2, max = 100)
     private String name;
 
     @ManyToOne(fetch = FetchType.LAZY)

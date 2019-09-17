@@ -5,18 +5,18 @@ DROP TABLE IF EXISTS persons;
 CREATE TABLE persons
 (
   id               INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  firstname        VARCHAR (30)          NOT NULL,
-  lastname         VARCHAR  (30)         NOT NULL,
-  patronymic       VARCHAR (30)          NOT NULL,
-  email            VARCHAR (50)          NOT NULL,
-  password         VARCHAR  (30)         NOT NULL
+  firstname        VARCHAR (100)          NOT NULL,
+  lastname         VARCHAR  (100)         NOT NULL,
+  patronymic       VARCHAR (100)          NOT NULL,
+  email            VARCHAR (100)          NOT NULL,
+  password         VARCHAR  (100)         NOT NULL
 );
 CREATE UNIQUE INDEX users_unique_email_idx ON persons (email);
 
 
 CREATE TABLE tasks (
   id          INT PRIMARY KEY AUTO_INCREMENT NOT NULL,
-  name        VARCHAR (30)   NOT NULL,
+  name        VARCHAR (100)   NOT NULL,
   person_id   INT            NOT NULL,
   state       BOOLEAN        NOT NULL,
   FOREIGN KEY (person_id) REFERENCES persons (id) ON DELETE CASCADE

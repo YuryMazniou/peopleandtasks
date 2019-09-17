@@ -28,7 +28,7 @@ public class TaskController {
 
     @PostMapping("/{person_id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
-    public void create(@Validated(View.Web.class) Task task,@PathVariable int person_id) {
+    public void create(@Validated(View.Web.class) @RequestBody Task task,@PathVariable int person_id) {
         repository.save(task,person_id);
     }
 }

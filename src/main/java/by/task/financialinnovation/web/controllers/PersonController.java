@@ -1,13 +1,14 @@
 package by.task.financialinnovation.web.controllers;
 
+import by.task.financialinnovation.View;
 import by.task.financialinnovation.model.Person;
 import by.task.financialinnovation.repository.PersonRepository;
-import by.task.financialinnovation.util.ValidationUtil;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-
-import javax.validation.Valid;
 import java.util.List;
 
 import static by.task.financialinnovation.util.ValidationUtil.*;
@@ -34,7 +35,8 @@ public class PersonController {
     }
 
     @PostMapping
-    public void createOrUpdate(@Valid Person person) {
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
+    public void createOrUpdate(@Validated(View.Web.class) @RequestBody Person person) {
         checkNotFound(repository.save(person)!=null,"Object did not create/update");
     }
 }

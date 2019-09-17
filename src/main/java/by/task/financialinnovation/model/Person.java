@@ -48,6 +48,7 @@ public class Person extends AbstractBaseEntity{
     @Column(name = "password", nullable = false)
     @NotBlank
     @Size(min = 5, max = 100)
+    @SafeHtml(groups = {View.Web.class})
     private String password;
 
     public Person() {
