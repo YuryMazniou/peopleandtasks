@@ -52,11 +52,14 @@ class PersonControllerTest extends AbstractControllerTest {
 
     @Test
     void create() throws Exception {
-        Person expected = new Person(null, "create","create","create","create@create","create");
+        Person expected = new Person(null, PERSON_CREATE.getFirstName(),PERSON_CREATE.getLastName()
+                ,PERSON_CREATE.getPatronymic(),PERSON_CREATE.getEmail(),PERSON_CREATE.getPassword());
         mockMvc.perform(MockMvcRequestBuilders.post(REST_URL)
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isNoContent());
+
+        assertMatch(repository.getAll(),PERSON1,PERSON2,PERSON3,PERSON_CREATE);
     }
 
     @Test

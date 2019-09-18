@@ -3,6 +3,8 @@ package by.task.financialinnovation.web.controllers;
 import by.task.financialinnovation.View;
 import by.task.financialinnovation.model.Task;
 import by.task.financialinnovation.repository.TaskRepository;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
@@ -11,9 +13,14 @@ import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
+import static by.task.financialinnovation.util.ValidationUtil.*;
+
 @RestController
 @RequestMapping("/tasks")
 public class TaskController {
+
+    private final Logger log = LoggerFactory.getLogger(TaskController.class);
+
     private final TaskRepository repository;
 
     @Autowired
@@ -23,12 +30,15 @@ public class TaskController {
 
     @GetMapping(value = "/{person_id}",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Task> getAll(@PathVariable int person_id){
+        log.info("getAll tasks");
         return repository.getAll(person_id);
     }
 
     @PostMapping("/{person_id}")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void create(@Validated(View.Web.class) @RequestBody Task task,@PathVariable int person_id) {
-        repository.save(task,person_id);
+        log.info("Start create task");
+        checkNotFound(repository.save(task,person_id)!=null,"Object did not create/update");
+        log.info("Create a task successly");
     }
 }

@@ -32,10 +32,4 @@ public class JpaTaskRepository implements TaskRepository {
             return task;}
         else return null;
     }
-
-    @Override
-    public Task get(int task_id,int person_id) {
-        Task task = em.find(Task.class, task_id);
-        return task != null && task.getPerson().getId() == person_id ? task : null;
-    }
 }

@@ -10,7 +10,7 @@ class RootControllerTest extends AbstractControllerTest {
 
     @Test
     void getStartPage() throws Exception {
-        mockMvc.perform(get("/"))
+        mockMvc.perform(get("/persons"))
                 .andDo(print())
                 .andExpect(status().isOk())
                 .andExpect(view().name("persons"))

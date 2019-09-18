@@ -29,8 +29,7 @@ public class Task extends AbstractBaseEntity {
 
     @Column(name = "state",nullable = false)
     @NotNull
-    @SafeHtml(groups = {View.Web.class})
-    private boolean state;
+    private Boolean state;
 
     public Task() {
     }
@@ -57,11 +56,11 @@ public class Task extends AbstractBaseEntity {
         this.person = person;
     }
 
-    public boolean isState() {
+    public Boolean getState() {
         return state;
     }
 
-    public void setState(boolean state) {
+    public void setState(Boolean state) {
         this.state = state;
     }
 
