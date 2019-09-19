@@ -16,7 +16,7 @@ import java.util.List;
 import static by.task.financialinnovation.util.ValidationUtil.*;
 
 @RestController
-@RequestMapping("/tasks")
+@RequestMapping("/task")
 public class TaskController {
 
     private final Logger log = LoggerFactory.getLogger(TaskController.class);

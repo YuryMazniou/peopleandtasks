@@ -10,7 +10,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class LogOfTaskControllerTest extends AbstractControllerTest {
 
-    private static final String REST_URL = "/logs";
+    private static final String REST_URL = "/log";
 
     @Test
     void getAll() throws Exception {

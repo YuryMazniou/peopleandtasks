@@ -5,9 +5,8 @@ cache:
   directories:
   - $HOME/.m2
 
-before_script:
-- mysql -e 'create database peopleandtasks'
-#- mysql -c 'create user "user"; grant all privileges on database peopleandtasks to "user"' -U mysql
+before_install:
+  - mysql -e 'CREATE DATABASE peopleandtasks;'
 
 branches:
   only:

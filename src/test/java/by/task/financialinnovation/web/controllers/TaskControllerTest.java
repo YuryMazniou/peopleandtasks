@@ -23,7 +23,7 @@ class TaskControllerTest extends AbstractControllerTest {
     @Autowired
     private TaskRepository repository;
 
-    private static final String REST_URL = "/tasks";
+    private static final String REST_URL = "/task";
 
     @Test
     void getAll() throws Exception {
