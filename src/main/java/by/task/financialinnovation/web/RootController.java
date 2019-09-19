@@ -9,9 +9,4 @@ public class RootController {
     public String root() {
         return "redirect:persons";
     }
-
-    @GetMapping("/persons")
-    public String getMeals() {
-        return "persons";
-    }
 }

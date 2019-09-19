@@ -10,6 +10,8 @@ import org.springframework.test.web.servlet.request.MockMvcRequestBuilders;
 import org.springframework.transaction.annotation.Propagation;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.List;
+
 import static by.task.financialinnovation.PersonTaskLogsData.*;
 import static by.task.financialinnovation.PersonTaskLogsData.contentJson;
 import static by.task.financialinnovation.util.exception.ErrorType.VALIDATION_ERROR;
@@ -59,7 +61,7 @@ class PersonControllerTest extends AbstractControllerTest {
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isNoContent());
 
-        assertMatch(repository.getAll(),PERSON1,PERSON2,PERSON3,PERSON_CREATE);
+        assertMatch(repository.getAll(), List.of(PERSON_CREATE,PERSON1,PERSON2,PERSON3));
     }
 
     @Test

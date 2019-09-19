@@ -9,11 +9,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 class RootControllerTest extends AbstractControllerTest {
 
     @Test
-    void getStartPage() throws Exception {
-        mockMvc.perform(get("/persons"))
+    void getPersons() throws Exception {
+        mockMvc.perform(get("/"))
                 .andDo(print())
-                .andExpect(status().isOk())
-                .andExpect(view().name("persons"))
-                .andExpect(forwardedUrl("/WEB-INF/jsp/persons.jsp"));
+                .andExpect(status().is3xxRedirection())
+                .andExpect(view().name("redirect:persons"))
+                .andExpect(redirectedUrl("persons"));
     }
 }

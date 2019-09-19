@@ -37,10 +37,6 @@ public class PersonTaskLogsData {
         assertThat(actual).usingFieldByFieldElementComparator().isEqualTo(expected);
     }
 
-    public static <T> void assertMatch(Iterable<T> actual, T... expected) {
-        assertThat(actual).usingFieldByFieldElementComparator().isEqualTo(expected);
-    }
-
     public static <T> void assertMatch(T actual, T expected) {
         assertThat(actual).isEqualToComparingFieldByField(expected);
     }
