@@ -71,7 +71,7 @@
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">
                     <span class="fa fa-close">Сбросить</span>
                 </button>
-                <button type="button" class="btn btn-primary" onclick="save()">
+                <button type="button" class="btn btn-primary" onclick="savePerson()">
                     <span class="fa fa-check">Сохранить</span>
                 </button>
             </div>

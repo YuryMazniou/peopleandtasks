@@ -26,30 +26,8 @@ function add() {
     $("#editRow").modal();
 }
 
-function updateRow(id) {
-    $("#modalTitle").html();
-    $.get(context.ajaxUrl + id, function (data) {
-        $.each(data, function (key, value) {
-            form.find("input[name='" + key + "']").val(value);
-        });
-        $('#editRow').modal();
-    });
-}
-
 function updateTableByData(data) {
     context.datatableApi.clear().rows.add(data).draw();
-}
-
-function save() {
-    $.ajax({
-        type: "POST",
-        url: context.ajaxUrl,
-        data: form.serialize()
-    }).done(function () {
-        $("#editRow").modal("hide");
-        context.updateTable();
-        successNoty("Успешно сохраненно");
-    });
 }
 
 let failedNote;
@@ -79,10 +57,4 @@ function failNoty(jqXHR) {
         type: "error",
         layout: "bottomRight"
     }).show();
-}
-
-function renderEditBtn(data, type, row) {
-    if (type === "display") {
-        return "<a onclick='updateRow(" + row.id + ");'><span class='fa fa-pencil'></span></a>";
-    }
 }

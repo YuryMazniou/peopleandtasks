@@ -15,7 +15,7 @@ import java.util.List;
 import static by.task.financialinnovation.util.ValidationUtil.*;
 
 @RestController
-@RequestMapping("/person")
+@RequestMapping(value = "/person", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PersonController {
     private final Logger log = LoggerFactory.getLogger(PersonController.class);
 
@@ -26,19 +26,19 @@ public class PersonController {
         this.repository = repository;
     }
 
-    @GetMapping(produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping
     public List<Person> getAll(){
         log.info("getAll persons");
         return repository.getAll();
     }
 
-    @GetMapping(value = "/{id}", produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/{id}")
     public Person get(@PathVariable int id) {
         log.info("get person {}", id);
         return checkNotFoundWithId(repository.get(id),id);
     }
 
-    @PostMapping
+    @PostMapping(consumes = MediaType.APPLICATION_JSON_VALUE)
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void createOrUpdate(@Validated(View.Web.class) @RequestBody Person person) {
         log.info("Start create/update person");
