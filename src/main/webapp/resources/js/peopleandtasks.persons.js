@@ -1,4 +1,4 @@
-const personsUrl = "persons/";
+const personsUrl = "person/";
 
 $(function () {
     makeEditable({

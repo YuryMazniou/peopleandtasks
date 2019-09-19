@@ -6,7 +6,7 @@ cache:
   - $HOME/.m2
 
 before_install:
-  - mysql -e 'CREATE DATABASE peopleandtasks;'
+  - mysql -u root --password="root" < test/travis.sql
 
 branches:
   only:
