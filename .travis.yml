@@ -5,8 +5,9 @@ cache:
   directories:
   - $HOME/.m2
 
-before_install:
-  - mysql -u root --password="root" < test/travis.sql
+before_script:
+  - mysql -c 'create database peopleandtask' -U mysql
+  - mysql -c 'create user "root"; grant all privileges on database peopleandtask to "root"' -U mysql
 
 branches:
   only:
