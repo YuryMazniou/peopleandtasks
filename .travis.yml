@@ -10,4 +10,4 @@ branches:
   - master
 
 services:
-  - mysql 5.1
+  - mysql
