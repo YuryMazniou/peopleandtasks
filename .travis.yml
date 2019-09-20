@@ -11,3 +11,6 @@ branches:
 
 services:
   - mysql
+
+install:
+  - mysql -u root -e 'CREATE USER IF NOT EXISTS travis@localhost; GRANT ALL ON *.* TO travis@localhost;'
