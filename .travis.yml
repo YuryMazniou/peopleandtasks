@@ -13,6 +13,6 @@ services:
   - mysql
 
 before_script:
-  - mysql -u root -e 'CREATE DATABASE peopleandtasks;'
+  - mysql -u root -e 'CREATE DATABASE peopleandtasks SET utf8 COLLATE utf8_general_ci;'
   - mysql -u root -e "CREATE USER 'makler'@'localhost' IDENTIFIED BY 'makler';"
   - mysql -u root -e "GRANT ALL ON peopleandtasks.* TO 'makler'@'localhost';"
