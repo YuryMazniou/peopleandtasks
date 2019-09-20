@@ -12,7 +12,12 @@ branches:
 services:
   - mysql
 
-before_script:
+before_install:
   - mysql -u root -e 'CREATE DATABASE peopleandtasks;'
   - mysql -u root -e "CREATE USER 'makler'@'localhost' IDENTIFIED BY 'makler';"
   - mysql -u root -e "GRANT ALL ON peopleandtasks.* TO 'makler'@'localhost';"
+
+#before_script:
+ # - mysql -u root -e 'CREATE DATABASE peopleandtasks;'
+#  - mysql -u root -e "CREATE USER 'makler'@'localhost' IDENTIFIED BY 'makler';"
+#  - mysql -u root -e "GRANT ALL ON peopleandtasks.* TO 'makler'@'localhost';"
