@@ -12,5 +12,7 @@ branches:
 services:
   - mysql
 
-install:
-  - mysql -u root -e 'CREATE USER IF NOT EXISTS travis@localhost; GRANT ALL ON *.* TO travis@localhost;'
+before_script:
+  - mysql -u root -e 'CREATE DATABASE peopleandtasks;'
+  - mysql -u root -e "CREATE USER 'makler'@'localhost' IDENTIFIED BY 'makler';"
+  - mysql -u root -e "GRANT ALL ON peopleandtasks.* TO 'makler'@'localhost';"
