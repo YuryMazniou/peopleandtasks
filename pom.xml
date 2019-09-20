@@ -264,7 +264,6 @@
         </profile>
         <profile>
             <id>heroku</id>
-            <!--https://devcenter.heroku.com/articles/java-webapp-runner            -->
             <build>
                 <plugins>
                     <plugin>
@@ -279,7 +278,6 @@
                                 </goals>
                                 <configuration>
                                     <artifactItems>
-                                        <!--https://github.com/jsimone/webapp-runner#using-without-memcached-or-redis-->
                                         <artifactItem>
                                             <groupId>com.github.jsimone</groupId>
                                             <artifactId>webapp-runner-main</artifactId>

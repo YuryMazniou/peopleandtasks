@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
-        <jdbc:script location="classpath:db/${jdbc.initLocation}"/>
+        <jdbc:script encoding="utf-8" location="classpath:db/${jdbc.initLocation}"/>
         <jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
     </jdbc:initialize-database>
 
@@ -42,7 +42,7 @@
               p:url="#{ 'jdbc:postgresql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
               p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
               p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
-              p:driverClassName="org.postgresql.Driver"
+              p:driverClassName="com.mysql.jdbc.Driver"
               p:validationQuery="SELECT 1"
               p:maxActive="10"
               p:minIdle="2"
