@@ -10,7 +10,7 @@
         http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <jdbc:initialize-database data-source="dataSource" enabled="${database.init}">
-        <jdbc:script encoding="utf-8" location="classpath:db/${jdbc.initLocation}"/>
+        <jdbc:script location="classpath:db/${jdbc.initLocation}"/>
         <jdbc:script encoding="utf-8" location="classpath:db/populateDB.sql"/>
     </jdbc:initialize-database>
 
@@ -25,7 +25,7 @@
 
         <bean id="dataSource"
               class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:driverClassName="com.mysql.jdbc.Driver"
+              p:driverClassName="com.mysql.cj.jdbc.Driver"
               p:url="${database.url}"
               p:username="${database.username}"
               p:password="${database.password}"/>
@@ -42,7 +42,7 @@
               p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
               p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
               p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
-              p:driverClassName="com.mysql.jdbc.Driver"
+              p:driverClassName="com.mysql.cj.jdbc.Driver"
               p:validationQuery="SELECT 1"
               p:maxActive="10"
               p:minIdle="2"
