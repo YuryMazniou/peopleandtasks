@@ -25,7 +25,7 @@
 
         <bean id="dataSource"
               class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:driverClassName="com.mysql.cj.jdbc.Driver"
+              p:driverClassName="com.mysql.jdbc.Driver"
               p:url="${database.url}"
               p:username="${database.username}"
               p:password="${database.password}"/>
@@ -39,11 +39,11 @@
         </bean>
         <bean id="dataSource"
               class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath() }"
+              p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath()+ '?serverTimezone=UTC' }"
               p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
               p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
-              p:driverClassName="com.mysql.cj.jdbc.Driver"
-              p:validationQuery="Select 1"
+              p:driverClassName="com.mysql.jdbc.Driver"
+              p:validationQuery="SELECT 1"
               p:maxActive="10"
               p:minIdle="2"
               p:maxWait="20000"
