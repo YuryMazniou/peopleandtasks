@@ -3,7 +3,7 @@
 #### task for interview
 
 - [Deploy application to Heroku(after click link,need time for starting app,about 10 sec)](https://peopleandtasks.herokuapp.com)
-
+##### Запросы составлены с учетом названий моих таблиц в БД,скрипты создания таблиц и заполнения лежат в srs/main/java/...../resources/bd
 #### 1)	Запрос, возвращающий список людей и количество задач, назначенных им
 `select p.*,count_task 
 from persons p,(select t.person_id,count(t.person_id) as count_task 
