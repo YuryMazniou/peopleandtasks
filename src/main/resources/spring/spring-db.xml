@@ -39,7 +39,7 @@
         </bean>
         <bean id="dataSource"
               class="org.apache.tomcat.jdbc.pool.DataSource"
-              p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath()+ '?serverTimezone=UTC' }"
+              p:url="#{ 'jdbc:mysql://' + @dbUrl.getHost() + @dbUrl.getPath()+ '?useUnicode=true&amp;characterEncoding=UTF-8&amp;serverTimezone=UTC' }"
               p:username="#{ @dbUrl.getUserInfo().split(':')[0] }"
               p:password="#{ @dbUrl.getUserInfo().split(':')[1] }"
               p:driverClassName="com.mysql.jdbc.Driver"

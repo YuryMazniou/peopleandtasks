@@ -45,7 +45,7 @@
                     <div class="form-group">
                         <h6>Статус</h6>
                         <label for="stateT" class="col-form-label">Выполнена</label>
-                        <input name="state" id="stateT" type="radio" value="true">
+                        <input name="state" id="stateT" type="radio" value="true" checked>
                         <br>
                         <label for="stateF" class="col-form-label">Не выполнена</label>
                         <input name="state" id="stateF" type="radio" value="false">
