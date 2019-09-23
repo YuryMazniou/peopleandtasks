@@ -1,9 +1,9 @@
-const taskUrl = "task/";
+const taskUrl = "rest/persons/";
 const id = localStorage.getItem('idPerson');
 
 $(function () {
     makeEditable({
-        ajaxUrl: taskUrl+id,
+        ajaxUrl: taskUrl+id+"/tasks",
         datatableOpts: {
             "columns": [
                 {
@@ -20,7 +20,7 @@ $(function () {
             ]
         },
         updateTable: function () {
-            $.get(taskUrl+id, updateTableByData);
+            $.get(taskUrl+id+"/tasks", updateTableByData);
         }
     });
 });
@@ -37,7 +37,7 @@ function saveTask() {
     contactForm.state = state;
     $.ajax({
         type: "POST",
-        url: taskUrl+id,
+        url: taskUrl+id+"/tasks",
         data: JSON.stringify(contactForm),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json'

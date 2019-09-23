@@ -2,6 +2,14 @@
 
 #### task for interview
 
+###### REST запросы
+###### GET /rest/persons  - все пользователи
+###### GET /rest/persons/{id} - достать пользователя
+###### POST /rest/persons - сохранить пользователя
+###### GET /rest/persons/{id}/tasks - все задачи пользователя 
+###### POST /rest/persons/{id}/tasks - сохранить задачу для пользователя 
+###### GET /rest/tasks/{id}/logs - все логи задачи 
+
 - [Deploy application to Heroku(after click link,need time for starting app,about 10 sec)](https://peopleandtasks.herokuapp.com)
 ##### Запросы составлены с учетом названий моих таблиц в БД,скрипты создания таблиц и заполнения лежат в srs/main/java/...../resources/bd
 #### 1)	Запрос, возвращающий список людей и количество задач, назначенных им

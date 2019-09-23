@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 
 @RestController
-@RequestMapping("/log")
+@RequestMapping
 public class LogOfTaskController {
 
     private final Logger log = LoggerFactory.getLogger(LogOfTaskController.class);
@@ -25,7 +25,7 @@ public class LogOfTaskController {
         this.repository = repository;
     }
 
-    @GetMapping(value = "/{task_id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/rest/tasks/{task_id}/logs",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<LogOfTask> getAll(@PathVariable int task_id){
         log.info("getAll logs of task");
         return repository.getAll(task_id);

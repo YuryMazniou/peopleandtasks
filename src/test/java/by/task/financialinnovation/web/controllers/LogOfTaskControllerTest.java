@@ -10,11 +10,11 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
 
 class LogOfTaskControllerTest extends AbstractControllerTest {
 
-    private static final String REST_URL = "/log";
+    private static final String REST_URL = "/rest/tasks";
 
     @Test
     void getAll() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL+"/"+6))
+        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL+"/"+6+"/logs"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(contentJson(LOG_OF_TASK7,LOG_OF_TASK6));

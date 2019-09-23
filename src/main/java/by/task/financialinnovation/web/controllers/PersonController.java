@@ -15,7 +15,7 @@ import java.util.List;
 import static by.task.financialinnovation.util.ValidationUtil.*;
 
 @RestController
-@RequestMapping(value = "/person", produces = MediaType.APPLICATION_JSON_VALUE)
+@RequestMapping(value = "/rest/persons", produces = MediaType.APPLICATION_JSON_VALUE)
 public class PersonController {
     private final Logger log = LoggerFactory.getLogger(PersonController.class);
 

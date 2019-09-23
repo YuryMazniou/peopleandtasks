@@ -24,7 +24,7 @@ class PersonControllerTest extends AbstractControllerTest {
     @Autowired
     private PersonRepository repository;
 
-    private static final String REST_URL = "/person";
+    private static final String REST_URL = "/rest/persons";
 
     @Test
     void getAll() throws Exception {
@@ -82,7 +82,7 @@ class PersonControllerTest extends AbstractControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(invalid)))
                 .andDo(print())
-                .andExpect(content().string("{\"url\":\"http://localhost/person\",\"type\":\"VALIDATION_ERROR\",\"typeMessage\":\"Validation error\",\"details\":[\"User with this email already exists\"]}"))
+                .andExpect(content().string("{\"url\":\"http://localhost/rest/persons\",\"type\":\"VALIDATION_ERROR\",\"typeMessage\":\"Validation error\",\"details\":[\"User with this email already exists\"]}"))
                 .andExpect(status().isConflict())
                 .andExpect(errorType(VALIDATION_ERROR));
     }

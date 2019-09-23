@@ -1,9 +1,9 @@
-const logUrl = "log/";
+const logUrl = "rest/tasks/";
 const idTask = localStorage.getItem('idTask');
 
 $(function () {
     makeEditable({
-        ajaxUrl: logUrl+idTask,
+        ajaxUrl: logUrl+idTask+"/logs",
         datatableOpts: {
             "columns": [
                 {

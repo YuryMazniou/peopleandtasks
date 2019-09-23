@@ -16,7 +16,7 @@ import java.util.List;
 import static by.task.financialinnovation.util.ValidationUtil.*;
 
 @RestController
-@RequestMapping("/task")
+@RequestMapping
 public class TaskController {
 
     private final Logger log = LoggerFactory.getLogger(TaskController.class);
@@ -28,13 +28,13 @@ public class TaskController {
         this.repository = repository;
     }
 
-    @GetMapping(value = "/{person_id}",produces = MediaType.APPLICATION_JSON_VALUE)
+    @GetMapping(value = "/rest/persons/{person_id}/tasks",produces = MediaType.APPLICATION_JSON_VALUE)
     public List<Task> getAll(@PathVariable int person_id){
         log.info("getAll tasks");
         return repository.getAll(person_id);
     }
 
-    @PostMapping("/{person_id}")
+    @PostMapping("/rest/persons/{person_id}/tasks")
     @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public void create(@Validated(View.Web.class) @RequestBody Task task,@PathVariable int person_id) {
         log.info("Start create task");

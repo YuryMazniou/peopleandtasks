@@ -23,11 +23,11 @@ class TaskControllerTest extends AbstractControllerTest {
     @Autowired
     private TaskRepository repository;
 
-    private static final String REST_URL = "/task";
+    private static final String REST_URL = "/rest/persons";
 
     @Test
     void getAll() throws Exception {
-        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL+"/"+1))
+        mockMvc.perform(MockMvcRequestBuilders.get(REST_URL+"/"+1+"/tasks"))
                 .andExpect(status().isOk())
                 .andExpect(content().contentTypeCompatibleWith(MediaType.APPLICATION_JSON))
                 .andExpect(contentJson(TASK2,TASK1));
@@ -36,7 +36,7 @@ class TaskControllerTest extends AbstractControllerTest {
     @Test
     void create() throws Exception {
         Task expected = new Task(null, TASK_CREATE.getName(),TASK_CREATE.getState());
-        mockMvc.perform(MockMvcRequestBuilders.post(REST_URL+"/"+1)
+        mockMvc.perform(MockMvcRequestBuilders.post(REST_URL+"/"+1+"/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isNoContent());
@@ -45,7 +45,7 @@ class TaskControllerTest extends AbstractControllerTest {
     @Test
     void createNotFound() throws Exception {
         Task expected = new Task(null, TASK_CREATE.getName(),TASK_CREATE.getState());
-        mockMvc.perform(MockMvcRequestBuilders.post(REST_URL+"/"+"10000000")
+        mockMvc.perform(MockMvcRequestBuilders.post(REST_URL+"/"+"10000000"+"/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isConflict());
@@ -54,7 +54,7 @@ class TaskControllerTest extends AbstractControllerTest {
     @Test
     void createInvalid() throws Exception {
         Task expected = new Task(null, "",TASK_CREATE.getState());
-        mockMvc.perform(MockMvcRequestBuilders.post(REST_URL+"/"+1)
+        mockMvc.perform(MockMvcRequestBuilders.post(REST_URL+"/"+1+"/tasks")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(JsonUtil.writeValue(expected)))
                 .andExpect(status().isUnprocessableEntity())
