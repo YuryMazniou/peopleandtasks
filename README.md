@@ -13,13 +13,6 @@
 - [Deploy application to Heroku(after click link,need time for starting app,about 10 sec)](https://peopleandtasks.herokuapp.com)
 ##### Запросы составлены с учетом названий моих таблиц в БД,скрипты создания таблиц и заполнения лежат в srs/main/java/...../resources/bd
 #### 1)	Запрос, возвращающий список людей и количество задач, назначенных им
-`select p.*,count_task 
-from persons p,(select t.person_id,count(t.person_id) as count_task 
-                from tasks t group by t.person_id) t 
-where p.id=t.person_id;`
+`select p.*,count(*) as count from persons p INNER JOIN tasks t ON p.id = t.person_id group by p.id`
 #### 2)	Запрос , возвращающий список людей, у которых есть задачи с суммарным временем выполнения больше 100 часов
-`select p.*
-from persons p,(select sum.person_id,SUM(sum.spent_of_time) as sum 
-                from (select t.person_id,l.spent_of_time 
-                      from tasks t,log_of_task l where t.id=l.task_id) sum group by sum.person_id) person_sum
-where p.id=person_sum.person_id and person_sum.sum>100;`
+`select p.* from persons p INNER JOIN tasks t on p.id = t.person_id INNER JOIN log_of_task l on t.id = l.task_id GROUP BY p.id HAVING sum(l.spent_of_time)>100;`
